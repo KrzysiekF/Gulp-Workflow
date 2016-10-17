@@ -1,0 +1,13 @@
+{
+  "name": "Gulp-Workflow",
+  "version": "1.0.0",
+  "description": "My Gulp workflow",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}
