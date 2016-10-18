@@ -5,21 +5,20 @@ module.exports = {
     core: {
         js: {
             files: [
-                
-
+                'page/assets/js/*.js',
                 '!app/core/js/**/*.spec.js'
             ],
-            dest: 'public/assets/js',
+            dest: 'page/assets/js',
             watch: [
-                'app/core/js/**/*.js'
+                'page/assets/js/**/*.js'
             ],
             fileName: 'app.min.js'
         },
 
         css: {
-            files: 'app/core/css/style.scss',
-            dest: 'public/assets/css',
-            watch: 'app/core/css/*.scss'
+            files: 'page/assets/styles/style.scss',
+            dest: 'page/assets/styles',
+            watch: 'page/assets/styles/*.scss'
         }
 
     },

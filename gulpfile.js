@@ -12,16 +12,7 @@ var gulp     = require('gulp-help')(require('gulp')),
         }
     });
 
-var Server = require('karma').Server;
-
 // require all tasks : gulp-load-subtasks
 $.loadSubtasks('gulp/tasks/**/*.js', $, paths, config, logger);
-
-gulp.task('test', ' - uruchomienie testów jednostkowych', function(done) {
-    new Server({
-        configFile: __dirname + '/karma.conf.js',
-        singleRun: false
-    }, done).start();
-});
 
 gulp.task(config.task.libs, [config.task.libsScripts, config.task.libsScriptsCopy, config.task.libsStylesCopy]);
