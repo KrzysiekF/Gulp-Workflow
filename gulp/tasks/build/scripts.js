@@ -7,11 +7,11 @@ var fs    = require('fs'),
 
 module.exports = function (gulp, $, paths, config, Logger) {
 
-    gulp.task(config.task.appScripts, ' - kompilowanie plików skryptów', function () {
+    gulp.task(config.task.appScripts, ' - app scripts', function () {
         Logger.msg('');
-        Logger.msg('Generuję plik skryptów aplikacji...');
+        Logger.msg('Generating your application scripts...');
         Logger.msg('');
-        Logger.msg('Łączę pliki...');
+        Logger.msg('I combine files...');
         Logger.msg('');
 
         return gulp.src(paths.core.js.files)
@@ -19,33 +19,33 @@ module.exports = function (gulp, $, paths, config, Logger) {
             .pipe($.concat(paths.core.js.fileName))
             .pipe(gulp.dest(paths.core.js.dest))
             .on('data', function () {
-                Logger.msg('Pliki połączone:');
+                Logger.msg('Combined file ready:');
             })
             .pipe($.size(config.size.options))
             .on('data', function () {
                 Logger.msg('');
-                Logger.msg('Minimalizuję plik...');
+                Logger.msg('I minimize files...');
                 Logger.msg('');
             })
             .pipe($.uglify(config.uglify.prodOptions))
             .pipe(gulp.dest(paths.core.js.dest))
             .on('data', function () {
-                Logger.msg('Plik gotowy:');
+                Logger.msg('File ready:');
             })
             .pipe(sourcemaps.write('/maps'))
             .pipe(gulp.dest(paths.core.js.dest))
             .pipe($.size(config.size.options))
             .on('data', function () {
-                Logger.success('Gotowe!');
+                Logger.success('Done!');
                 Logger.msg('');
             });
     });
 
-    gulp.task(config.task.libsScripts, ' - kompilowanie plików skryptów biliotek', function () {
+    gulp.task(config.task.libsScripts, ' - compiling script files libraries', function () {
         Logger.msg('');
-        Logger.msg('Generuję plik bibliotek...');
+        Logger.msg('Generating your libraries file...');
         Logger.msg('');
-        Logger.msg('Łączę pliki...');
+        Logger.msg('I combine files...');
         Logger.msg('');
 
         return gulp.src(paths.libs.js.files)
@@ -53,33 +53,33 @@ module.exports = function (gulp, $, paths, config, Logger) {
             .pipe($.concat(paths.libs.js.fileName))
             .pipe(gulp.dest(paths.libs.js.dest))
             .on('data', function () {
-                Logger.msg('Pliki połączone:');
+                Logger.msg('Combined file ready:');
             })
             .pipe($.size(config.size.options))
             .on('data', function () {
                 Logger.msg('');
-                Logger.msg('Minimalizuję plik...');
+                Logger.msg('I minimize files...');
                 Logger.msg('');
             })
             .pipe($.uglify(config.uglify.prodOptions))
             .pipe(gulp.dest(paths.libs.js.dest))
             .on('data', function () {
-                Logger.msg('Plik gotowy:');
+                Logger.msg('File ready:');
             })
             .pipe(sourcemaps.write('/maps'))
             .pipe(gulp.dest(paths.libs.js.dest))
             .pipe($.size(config.size.options))
             .on('data', function () {
-                Logger.success('Gotowe!');
+                Logger.success('Done!');
                 Logger.msg('');
             });
     });
 
-    gulp.task(config.task.libsScriptsCopy, ' - kopiowanie potrzebnych plików skryptów bilbiotek', function () {
+    gulp.task(config.task.libsScriptsCopy, ' - copy the necessary library files (scripts)', function () {
         var length = paths.libs.js.copy.files.length;
         var i      = 1;
 
-        Logger.warning('Kopiuje potrzebne pliki bibliotek (ilość plików: ' + length + '):');
+        Logger.warning('Copies library files (files: ' + length + '):');
         Logger.msg('');
 
         return gulp

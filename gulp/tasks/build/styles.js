@@ -9,9 +9,9 @@ var fs    = require('fs'),
 
 module.exports = function (gulp, $, paths, config, Logger) {
 
-    gulp.task(config.task.appStyles, ' - pliki styli koszyka', function () {
+    gulp.task(config.task.appStyles, ' - styles file', function () {
         Logger.msg('');
-        Logger.msg('Generuję plik styli...');
+        Logger.msg('Generating your application styles...');
         Logger.msg('');
 
         return gulp.src(paths.core.css.files)
@@ -20,33 +20,33 @@ module.exports = function (gulp, $, paths, config, Logger) {
             .pipe($.autoprefixer(config.autoprefixer.options))
             .pipe(gulp.dest(paths.core.css.dest))
             .on('data', function () {
-                Logger.msg('Plik gotowy:');
+                Logger.msg('Combined file ready:');
             })
             .pipe($.size(config.size.options))
             .on('data', function () {
                 Logger.msg('');
-                Logger.msg('Minimalizuję plik...');
+                Logger.msg('I minimize files...');
                 Logger.msg('');
             })
             .pipe(cleanCSS(config.cleanCSS.options))
             .pipe(gulp.dest(paths.core.css.dest))
             .on('data', function () {
-                Logger.msg('Plik gotowy:');
+                Logger.msg('File ready:');
             })
             .pipe(sourcemaps.write('/maps'))
             .pipe(gulp.dest(paths.core.css.dest))
             .pipe($.size(config.size.options))
             .on('data', function () {
-                Logger.success('Gotowe!');
+                Logger.success('Done!');
                 Logger.msg('');
             });
     });
 
-    gulp.task(config.task.libsStylesCopy, ' - kopiowanie potrzebnych plików styli bibliotek', function () {
+    gulp.task(config.task.libsStylesCopy, ' - copy the necessary library files (styles)', function () {
         var length = paths.libs.css.copy.files.length;
         var i      = 1;
 
-        Logger.warning('Kopiuje potrzebne pliki bibliotek (ilość plików: ' + length + '):');
+        Logger.warning('Copies library files (files: ' + length + '):');
         Logger.msg('');
 
         return gulp
